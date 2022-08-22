@@ -15,17 +15,23 @@ export default function Posts () {
       const posts = useSelector(selectPosts);
 
       console.log(posts);
-
+      
       return (
-            <div>
+            <div className='postsContainer'>
+                
                   {posts.map((post) => {
-                        return <Post author={post.data.author}
-                                          key={post.data.id}
-                                          permalink={post.data.permalink}
-                                          text={post.data.selftext}
-                                          title={post.data.title}/>
+                    return <Post author= {post.data.author}
+                                        video= {post.data.is_video}
+                                        key= {post.data.id}
+                                        src= {post.data.media}
+                                        text= {post.data.selftext}
+                                        title= {post.data.title}
+                                        numComments= {post.data.num_comments}
+                                        postHint={post.data.post_hint}/>
                   })}
+                
             </div>
+            
       )
 }
 
