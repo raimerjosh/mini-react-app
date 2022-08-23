@@ -13,7 +13,14 @@ export const loadPosts = createAsyncThunk(
             return json.data.children;
       }
 );
-
+export const loadSearchTerm = createAsyncThunk(
+      'posts/loadSearchTerm', 
+      async (term) => {
+            const searchResults = await fetch(`https://www.reddit.com/search/?q=${term}`);
+            const json = await searchResults.json();
+            console.log(json);
+      }
+);
 
 export const postsSlice = createSlice({
       //normally takes in an option object, but you can just create the object here

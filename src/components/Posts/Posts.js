@@ -16,6 +16,7 @@ export default function Posts () {
 
       console.log(posts);
       
+      
       return (
             <div className='postsContainer'>
                 
@@ -23,17 +24,19 @@ export default function Posts () {
                     return <Post author= {post.data.author}
                                         video= {post.data.is_video}
                                         key= {post.data.id}
-                                        src= {post.data.media}
+                                        src= {post.data.url}
                                         text= {post.data.selftext}
                                         title= {post.data.title}
                                         numComments= {post.data.num_comments}
-                                        postHint={post.data.post_hint}/>
+                                        postHint={post.data.post_hint}
+                                        thumbnail={post.data.thumbnail}
+                                        permalink={post.data.permalink}/>
                   })}
                 
             </div>
             
-      )
-}
+      )}
+
 
       
 

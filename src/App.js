@@ -20,7 +20,7 @@ export default function App () {
       </Route>
 
       <Route>
-          <Posts/>
+        <Posts/>
       </Route>
     </Router>
   )
