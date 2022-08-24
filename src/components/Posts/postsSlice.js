@@ -14,7 +14,8 @@ export const loadPosts = createAsyncThunk(
       }
 );
 
-//import 'term' or pull from use params
+//import 'term' from elsewhere
+//  or use useParams in post to get value of term 
 
 export const loadSearchResults = createAsyncThunk(
       'posts/loadSearchResults', 
@@ -24,21 +25,21 @@ export const loadSearchResults = createAsyncThunk(
             
             console.log(json.data.children);
             return json.data.children;
-
-            
       }
   );
 
 
 export const postsSlice = createSlice({
-      //normally takes in an option object, but you can just create the object here
+      //should the eventhandlers for the searchbar go in the reducer? 
+
       name: 'posts',
       initialState: {
             posts: [],
             isLoading: false,
             hasError: false,
       },
-      reducers: {},
+      reducers: {}
+      ,
       //reducers for loadPosts
       extraReducers: {
             [loadPosts.pending]: (state, action) => {
@@ -66,7 +67,7 @@ export const postsSlice = createSlice({
             [loadSearchResults.rejected]: (state, action) => {
                   state.isLoading = false;
                   state.hasError = true;
-            }
+            },
       }
 });
 

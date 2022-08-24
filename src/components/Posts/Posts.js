@@ -3,14 +3,18 @@ import { selectPosts } from "./postsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { loadPosts } from "./postsSlice";
 import Post from "./Post";
-
+import { useParams } from "react-router-dom";
 
 export default function Posts () {
       const dispatch = useDispatch();
+      //loadPosts gets called on the first render, posts with searchterm url param will be called on submit
 
       useEffect(() => {
             dispatch(loadPosts())
       }, [dispatch]);
+
+
+      //if statement goes here to determine if posts is selectPosts or if it is loadSearchTerm(term)
 
       const posts = useSelector(selectPosts);
 
