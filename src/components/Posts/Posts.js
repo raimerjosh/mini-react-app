@@ -18,8 +18,7 @@ export default function Posts () {
       
       
       return (
-            <div className='postsContainer'>
-                
+            <div className='postsContainer'>          
                   {posts.map((post) => {
                     return <Post author= {post.data.author}
                                         video= {post.data.is_video}

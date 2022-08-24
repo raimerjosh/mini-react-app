@@ -13,14 +13,22 @@ export const loadPosts = createAsyncThunk(
             return json.data.children;
       }
 );
-export const loadSearchTerm = createAsyncThunk(
-      'posts/loadSearchTerm', 
+
+//import 'term' or pull from use params
+
+export const loadSearchResults = createAsyncThunk(
+      'posts/loadSearchResults', 
       async (term) => {
-            const searchResults = await fetch(`https://www.reddit.com/search/?q=${term}`);
+            const searchResults = await fetch(`https://www.reddit.com/search.json?q=cake%20recipes`);
             const json = await searchResults.json();
-            console.log(json);
+            
+            console.log(json.data.children);
+            return json.data.children;
+
+            
       }
-);
+  );
+
 
 export const postsSlice = createSlice({
       //normally takes in an option object, but you can just create the object here
@@ -31,7 +39,7 @@ export const postsSlice = createSlice({
             hasError: false,
       },
       reducers: {},
-      //extraReducers allows createSlice to respond to action types created by our promise
+      //reducers for loadPosts
       extraReducers: {
             [loadPosts.pending]: (state, action) => {
                   state.isLoading = true;
@@ -42,6 +50,20 @@ export const postsSlice = createSlice({
                   state.posts = action.payload;
             },
             [loadPosts.rejected]: (state, action) => {
+                  state.isLoading = false;
+                  state.hasError = true;
+            }, 
+      //reducers for loadSearchTerm
+
+            [loadSearchResults.pending]: (state, action) => {
+                  state.isLoading = true;
+                  state.hasError = false;
+            },
+            [loadSearchResults.fulfilled]: (state, action) => {
+                  state.isLoading = false;
+                  state.posts = action.payload;
+            },
+            [loadSearchResults.rejected]: (state, action) => {
                   state.isLoading = false;
                   state.hasError = true;
             }

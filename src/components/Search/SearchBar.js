@@ -1,13 +1,24 @@
-import React, {useEffect} from "react";
-import { selectPosts } from "./postsSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { loadPosts } from "./postsSlice";
-import Post from "./Post";
+import React from "react";
+import { loadSearchResults } from "../Posts/postsSlice"; 
+import { useDispatch } from "react-redux";
 
 
-export default function Search () {
-      
+
+export default function SearchBar () {
+    const dispatch = useDispatch();
+
+
+	const handleSubmit = dispatch(loadSearchResults())
+
       return (
-            
+
+		<div className='formContainer'>
+			<form className='searchBarContainer'>
+    			<input type="text" name="name" placeholder="search..."/>
+  				<input type="submit" value="Submit" />
+			</form>
+		</div>
+
+		
       )
 }
