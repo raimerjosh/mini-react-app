@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { selectPosts } from "./postsSlice";
+import { loadSearchResults, selectPosts, selectTerm } from "./postsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { loadPosts } from "./postsSlice";
 import Post from "./Post";
@@ -9,30 +9,35 @@ export default function Posts () {
       const dispatch = useDispatch();
       //loadPosts gets called on the first render, posts with searchterm url param will be called on submit
 
-      useEffect(() => {
-            dispatch(loadPosts())
+      const posts = useSelector(selectPosts);
+
+      const { term } = useParams();
+
+      useEffect(()=> {
+            dispatch(loadPosts(term))
       }, [dispatch]);
 
 
       //if statement goes here to determine if posts is selectPosts or if it is loadSearchTerm(term)
 
-      const posts = useSelector(selectPosts);
-
-      console.log(posts);
       
+      // useEffect((term) => {
+      //       dispatch(loadSearchResults(term))
+      // }, [dispatch]);
+
+
+
       
       return (
             <div className='postsContainer'>          
                   {posts.map((post) => {
                     return <Post author= {post.data.author}
-                                        video= {post.data.is_video}
                                         key= {post.data.id}
                                         src= {post.data.url}
                                         text= {post.data.selftext}
                                         title= {post.data.title}
                                         numComments= {post.data.num_comments}
                                         postHint={post.data.post_hint}
-                                        thumbnail={post.data.thumbnail}
                                         permalink={post.data.permalink}/>
                   })}
                 

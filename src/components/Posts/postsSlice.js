@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { useEffect } from "react";
+
 //thunk action createer will generate 3 action types: 'posts/loadPosts/pending', etc for
 //pending, fulfilled, and rejected
 
@@ -7,26 +9,19 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const loadPosts = createAsyncThunk(
       'posts/loadPosts',
-      async () => {
-            const data = await fetch('https://www.reddit.com/r/popular.json');
-            const json = await data.json();
-            return json.data.children;
-      }
-);
-
-//import 'term' from elsewhere
-//  or use useParams in post to get value of term 
-
-export const loadSearchResults = createAsyncThunk(
-      'posts/loadSearchResults', 
       async (term) => {
-            const searchResults = await fetch(`https://www.reddit.com/search.json?q=cake%20recipes`);
-            const json = await searchResults.json();
-            
-            console.log(json.data.children);
-            return json.data.children;
-      }
-  );
+
+//conditional determines if there is a search term, if not it will load popular page
+		let url = term ? `https://www.reddit.com/search.json?q=${term}` : 'https://www.reddit.com/r/popular.json';
+
+
+		const data = await fetch(url);
+		const json = await data.json();
+		return json.data.children;
+
+		   
+    }
+);
 
 
 export const postsSlice = createSlice({
@@ -54,25 +49,20 @@ export const postsSlice = createSlice({
                   state.isLoading = false;
                   state.hasError = true;
             }, 
-      //reducers for loadSearchTerm
-
-            [loadSearchResults.pending]: (state, action) => {
-                  state.isLoading = true;
-                  state.hasError = false;
-            },
-            [loadSearchResults.fulfilled]: (state, action) => {
-                  state.isLoading = false;
-                  state.posts = action.payload;
-            },
-            [loadSearchResults.rejected]: (state, action) => {
-                  state.isLoading = false;
-                  state.hasError = true;
-            },
       }
 });
 
+
+
+
+
+
+
 export const selectPosts = (state) => state.posts.posts;
 
+export const selectTerm = (state) => state.posts.term;
+
+export const { setTerm } = postsSlice.actions;
 
 export default postsSlice.reducer; 
 

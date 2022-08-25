@@ -1,28 +1,31 @@
-import React, { useState } from "react";
-import { loadSearchResults } from "../Posts/postsSlice"; 
+import React, { useEffect } from "react";
+import { loadSearchResults, setTerm } from "../Posts/postsSlice"; 
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-
-
+import { selectTerm } from "../Posts/postsSlice";
+import { useSelector } from "react-redux";
+import { store } from "../../store";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function SearchBar () {
-    const dispatch = useDispatch();
-	
-	// const { term } = useParams();
+    
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const [ term, setTerm ] = useState('');
 
+	//handles term state change to have up to date value of term
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(e);
-		const term = e.target.value;
-		console.log(term);
-	};
+		history.push(`/search/${term}`); 
+	}
+	
 
       return (
 
 		<div className='formContainer'>
-    		<form className='searchBarContainer'>
-  				<input type="text" />
-				<input type="submit"  onSubmit={handleSubmit}/>
+    		<form className='searchBarContainer'
+					onSubmit={handleSubmit}>
+  				<input type="text" onChange={(e) => setTerm(e.target.value)}/>
+				<input type="submit" />
 			</form>
 		</div>
 

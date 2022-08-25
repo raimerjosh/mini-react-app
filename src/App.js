@@ -14,6 +14,10 @@ import SearchBar from './components/Search/SearchBar';
 
 export default function App () {
 
+  // useEffect(() => {
+      //       dispatch(loadPosts())
+      // }, [dispatch]);
+
   return (
     <Router>
       <Route>
@@ -28,7 +32,7 @@ export default function App () {
         <Posts />
       </Route>
 
-      <Route path='/search:term'>
+      <Route path='/search/:term'>
         <Posts />
       </Route>
 
