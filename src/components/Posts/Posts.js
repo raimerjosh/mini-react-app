@@ -6,9 +6,9 @@ import Post from "./Post";
 import { useParams } from "react-router-dom";
 
 export default function Posts () {
-      const dispatch = useDispatch();
-      //loadPosts gets called on the first render, posts with searchterm url param will be called on submit
 
+      const dispatch = useDispatch();
+      
       const posts = useSelector(selectPosts);
 
       const { term } = useParams();
@@ -16,15 +16,6 @@ export default function Posts () {
       useEffect(()=> {
             dispatch(loadPosts(term))
       }, [dispatch]);
-
-
-      //if statement goes here to determine if posts is selectPosts or if it is loadSearchTerm(term)
-
-      
-      // useEffect((term) => {
-      //       dispatch(loadSearchResults(term))
-      // }, [dispatch]);
-
 
 
       
@@ -40,9 +31,7 @@ export default function Posts () {
                                         postHint={post.data.post_hint}
                                         permalink={post.data.permalink}/>
                   })}
-                
-            </div>
-            
+      </div> 
       )}
 
 

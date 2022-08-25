@@ -39,6 +39,9 @@ input {
   display: flex;
   flex-direction: column;
   margin: 0px 50px;
+  max-width: 800px;
+  min-width: 300px;
+  flex-shrink: 6;
 }
 
 .postContainer {
@@ -57,6 +60,21 @@ p {
 h1 {
   padding: 0px 10px;
   font-size: 24px;
+}
+
+
+.postAndFilterContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-height: 250px;
 }
 
 

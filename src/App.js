@@ -4,6 +4,7 @@ import "./App.css";
 import Posts from './components/Posts/Posts';
 import { Provider } from 'react-redux';
 import SearchBar from './components/Search/SearchBar';
+import Filters from './components/Filters/Filters';
 
 // having the highest level component return a router
 // prevents url changes from causing page reloads
@@ -20,6 +21,7 @@ export default function App () {
 
   return (
     <Router>
+
       <Route>
         <Header />
       </Route>
@@ -29,13 +31,17 @@ export default function App () {
       </Route>
 
       <Route exact path='/'>
-        <Posts />
+        <div className='postAndFilterContainer'>
+          <Posts />
+          <Filters />
+        </div>
       </Route>
 
       <Route path='/search/:term'>
         <Posts />
       </Route>
 
+     
     </Router>
 
       
