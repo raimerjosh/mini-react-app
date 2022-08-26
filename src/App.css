@@ -1,19 +1,32 @@
+body {
+  font-family: monospace;
+  background-color: aquamarine;
+}
+
 .img {
   height: 50px;
   width: 50px;
+  border-radius: 50px;
 }
 
 .headerContainer {
   display: flex;
   justify-content: space-between;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-top: 10px;
+  margin: 10px;
+  padding: 10px;
+  background-color: beige;
+  border-radius: 10px;
 }
 
 .logoContainer {
   display: flex;
+  justify-content: space-between;
 }
+
+.logoContainer:hover {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 
 .searchBarContainer {
   display: flex;
@@ -23,6 +36,7 @@
   padding: 10px;
   border-radius: 10px;
   max-width: 390px;
+  background-color: beige;
 }
 
 .formContainer {
@@ -38,19 +52,59 @@ input {
 .postsContainer {
   display: flex;
   flex-direction: column;
-  margin: 0px 50px;
+  margin: 0px 5px;
   max-width: 800px;
-  min-width: 300px;
+  min-width: 200px;
   flex-shrink: 6;
 }
 
 .postContainer {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 10px 5px 10px 10px;
   padding: 10px;
   border: 2px black solid;
   border-radius: 10px;
+  background-color: beige;
+}
+
+.postContainer:hover {
+  background-color: bisque;
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-height: 250px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  position: sticky; 
+  top: 50px;
+  background-color: beige;
+}
+
+
+
+.postContainer p {
+  flex-shrink: 4;
+  font-family: monospace;
+  flex-wrap: wrap;
+  flex-shrink: 4;
+  word-wrap: break-word;
+}
+
+.postContainer img {
+  border-radius: 10px;
+}
+
+.filterContainer {
+  text-align: center;
+  display: flex;
+  padding: 10px;
 }
 
 p {
@@ -75,19 +129,5 @@ h1 {
   align-content: center;
 }
 
-.filtersContainer {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid black;
-  border-radius: 10px;
-  max-height: 250px;
-  justify-content: center;
-  align-items: center;
-  padding: 0px 20px;
-  margin: 10px;
-}
 
-.filterContainer {
-  text-align: center;
-}
 

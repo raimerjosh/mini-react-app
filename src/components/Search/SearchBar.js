@@ -24,7 +24,7 @@ export default function SearchBar () {
 		<div className='formContainer'>
     		<form className='searchBarContainer'
 					onSubmit={handleSubmit}>
-  				<input type="text" onChange={(e) => setTerm(e.target.value)}/>
+  				<input placeholder='search...' type="text" onChange={(e) => setTerm(e.target.value)}/>
 				<input type="submit" />
 			</form>
 		</div>
