@@ -1,14 +1,22 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Filters from "./Filters";
 
+export default function Filter ({term, setFilter}) {
 
 
-export default function Filter ({name}) {
 
+    const handleClick = () => {
+        
+        console.log('hello');
+        
+    }
 
     return (
         <div className="filterContainer">
-            <h1>{name}</h1>
+            <NavLink to={`/filters/${term}`} onClick={handleClick}>
+                {term}
+            </NavLink>
         </div>
         
     )

@@ -9,12 +9,21 @@ import { useEffect } from "react";
 
 export const loadPosts = createAsyncThunk(
       'posts/loadPosts',
-      async (term) => {
+      async ([term, pageType]) => {
 
 //conditional determines if there is a search term, if not it will load popular page
-		let url = term ? `https://www.reddit.com/search.json?q=${term}` : 'https://www.reddit.com/r/popular.json';
+		
+let url = '';
 
+		if (pageType === 'home') {
+			url = 'https://www.reddit.com/r/popular.json';
+		} else if (pageType === 'search') {
+			url = `https://www.reddit.com/search.json?q=${term}`;
+		} else if (pageType === 'filter') {
+			url = `https://www.reddit.com/r/${term}.json`;
+		}
 
+		
 		const data = await fetch(url);
 		const json = await data.json();
 		return json.data.children;

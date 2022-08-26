@@ -24,21 +24,30 @@ export default function App () {
 
       <Route>
         <Header />
-      </Route>
-
-      <Route>
         <SearchBar />
       </Route>
 
+      
+
       <Route exact path='/'>
         <div className='postAndFilterContainer'>
-          <Posts />
+          <Posts pageType='home'/>
           <Filters />
         </div>
       </Route>
 
       <Route path='/search/:term'>
-        <Posts />
+        <div className='searchAndFilterContainer'>
+          <Posts pageType='search'/>
+          <Filters />
+        </div>
+      </Route>
+
+      <Route path='/filters/:term'>
+        <div className='searchAndFilterContainer'>
+          <Posts pageType='filter'/>
+          <Filters />
+        </div>
       </Route>
 
      

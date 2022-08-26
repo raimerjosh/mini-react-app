@@ -11,11 +11,7 @@ export default function Post ({author,
                               thumbnail,
                               permalink}) {
       
-      //Conditional statement that determines if there is an image or not
-     
-      //needs to filter if image or a link
-           
-
+ 
 
       return (
             <div className='postContainer'>

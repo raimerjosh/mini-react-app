@@ -5,7 +5,7 @@ import { loadPosts } from "./postsSlice";
 import Post from "./Post";
 import { useParams } from "react-router-dom";
 
-export default function Posts () {
+export default function Posts ({pageType}) {
 
       const dispatch = useDispatch();
       
@@ -14,8 +14,11 @@ export default function Posts () {
       const { term } = useParams();
 
       useEffect(()=> {
-            dispatch(loadPosts(term))
-      }, [dispatch]);
+
+            dispatch(loadPosts([term, pageType]))
+
+      }, [dispatch, term, pageType]);
+      
 
 
       

@@ -1,21 +1,26 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Filter from "./Filter";
+import { useState } from "react";
+
 export default function Filters () {
 
-    const categories = ['test 1', 'test 2', 'test 3'];
+    const [filter, setFilter] = useState('');
+
+    const subReddits = ['popular', 'funny', 'interestingasfuck', 'politics', 'pics'];
 
     return (
-    
+        
         <div className="filtersContainer">
             <h3>Categories</h3>
-            {categories.map((category) => {
-                return <Filter name={category}
-                                key={category}/>
+            {subReddits.map((term) => {
+                    return <Filter term={term}
+                                    key={term}
+                                    setFilter={setFilter}/>
             })}
         </div>
-    
     )
-
-    }
+}
 
    
+
