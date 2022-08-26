@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Filter from "./Filter";
 import { useState } from "react";
 

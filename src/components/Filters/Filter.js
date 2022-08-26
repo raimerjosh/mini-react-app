@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Filters from "./Filters";
 
 export default function Filter ({term, setFilter}) {
 
@@ -9,7 +8,7 @@ export default function Filter ({term, setFilter}) {
     const handleClick = () => {
         
         console.log('hello');
-        
+
     }
 
     return (

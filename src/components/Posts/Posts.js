@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { loadSearchResults, selectPosts, selectTerm } from "./postsSlice";
+import { selectPosts } from "./postsSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { loadPosts } from "./postsSlice";
 import Post from "./Post";

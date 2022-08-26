@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useEffect } from "react";
 
 //thunk action createer will generate 3 action types: 'posts/loadPosts/pending', etc for
 //pending, fulfilled, and rejected

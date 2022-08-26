@@ -1,14 +1,9 @@
-import Posts from "./Posts";
-
 export default function Post ({author,
                                title, 
                                text, 
-                               link, 
                                numComments, 
                                src, 
-                               video, 
                                postHint,
-                              thumbnail,
                               permalink}) {
       
  

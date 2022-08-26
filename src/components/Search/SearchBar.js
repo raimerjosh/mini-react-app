@@ -1,9 +1,5 @@
-import React, { useEffect } from "react";
-import { loadSearchResults, setTerm } from "../Posts/postsSlice"; 
+import React from "react";
 import { useDispatch } from "react-redux";
-import { selectTerm } from "../Posts/postsSlice";
-import { useSelector } from "react-redux";
-import { store } from "../../store";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 

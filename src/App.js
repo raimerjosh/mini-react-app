@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import "./App.css";
 import Posts from './components/Posts/Posts';
-import { Provider } from 'react-redux';
 import SearchBar from './components/Search/SearchBar';
 import Filters from './components/Filters/Filters';
 
