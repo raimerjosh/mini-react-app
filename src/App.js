@@ -28,21 +28,21 @@ export default function App () {
 
       
 
-      <Route exact path='/'>
+      <Route exact path='netlify.app/'>
         <div className='postAndFilterContainer'>
           <Posts pageType='home'/>
           <Filters />
         </div>
       </Route>
 
-      <Route path='/search/:term'>
+      <Route path='netlify.app/search/:term'>
         <div className='searchAndFilterContainer'>
           <Posts pageType='search'/>
           <Filters />
         </div>
       </Route>
 
-      <Route path='/filters/:term'>
+      <Route path='netlify.app/filters/:term'>
         <div className='searchAndFilterContainer'>
           <Posts pageType='filter'/>
           <Filters />
